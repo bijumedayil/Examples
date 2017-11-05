@@ -1,0 +1,5 @@
+// creating index on PHONE_NUMBER column in PHONE table
+
+DROP INDEX IDX_PHONE;
+
+CREATE INDEX IDX_PHONE ON PHONE(PHONE_NUMBER);

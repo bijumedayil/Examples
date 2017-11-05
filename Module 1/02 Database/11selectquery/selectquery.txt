@@ -1,0 +1,220 @@
+1) example for SELECT and FROM clause
+
+//Using SELECT clause for selecting columns and FROM clause for selecting tables.
+
+// Q1. retrieve all the details in EMP table. 
+
+SELECT * 
+FROM EMP;
+
+// Q2. retrieve the details of all employee and their jobs
+
+SELECT ENAME, JOB 
+FROM EMP;
+
+
+//Using sql function with SELECT clause.
+
+// Q3.find the total salary of all employees
+
+SELECT SUM(SAL) 
+FROM EMP;
+
+2) example for WHERE clause
+
+// comparison operator(=, >, <, >=,<=,<> ). With comparison operator we can provide a single value.
+
+//Q4. retrieve all employees working for department number 20
+
+SELECT ENAME, DEPTNO
+FROM EMP 
+WHERE DEPTNO=20;
+
+//Q5. retrieve all managers and their salaries
+
+SELECT ENAME, SAL
+FROM EMP
+WHERE JOB='MANAGER';
+
+//Q6. retrieve all employees whose salary is greater than 2000
+
+SELECT ENAME, SAL
+FROM EMP
+WHERE SAL > 2000;
+
+
+
+// IN operator (we can provide multiple values with IN operator)
+
+//Q7. retrieve salary and job details of 2 employees ALLEN & BLAKE
+
+SELECT ENAME, SAL, JOB
+FROM EMP 
+WHERE ENAME IN ('ALLEN','BLAKE');
+
+//Q8. retrieve salary and job details of 3 employees ALLEN,BLAKE & JONES
+
+SELECT ENAME, SAL, JOB
+FROM EMP 
+WHERE ENAME IN ('ALLEN','BLAKE', 'JONES');
+
+
+//pattern matching operator(LIKE)
+
+// There are 2 pattern matching operator % and _
+
+// % replaces multiple values i.e 0 or more than 1 character
+
+//Q9. retrieve all employees whose name starts with A
+
+SELECT EMPNO, ENAME
+FROM EMP 
+WHERE ENAME LIKE 'A%';
+
+//Q10. replaces single value
+
+SELECT EMPNO, ENAME 
+FROM EMP 
+WHERE ENAME LIKE 'S_ITH%';
+
+//Q11. using both _ and %
+
+SELECT EMPNO, ENAME 
+FROM EMP 
+WHERE ENAME LIKE '_A%';
+
+// range test operator (BETWEEN)
+//Q12. retrieve all employees whose salary is between than 2000 & 3000
+
+SELECT ENAME, SAL
+FROM EMP
+WHERE SAL BETWEEN 2000 AND 3000;
+
+
+//null value test operator (IS NULL)
+//Q13. retrieve all employees who are not getting commission
+
+SELECT * 
+FROM EMP 
+WHERE COMM IS NULL;
+
+//logical operator (AND, OR, NOT)
+//AND, OR operators are used for giving multiple conditions. They are used to provide restrictions.
+
+//Q14. retrieve all employees whose salary is between 2000 and 3000.(AND operator is used to provide conjunction restriction)
+
+SELECT ENAME, JOB,SAL 
+FROM EMP 
+WHERE SAL >= 2000 
+AND SAL <= 3000;
+
+
+//Q15. retrieve all employees who are salesman or clerk.(OR operator is used to provide disconjunction restriction)
+
+SELECT ENAME, JOB 
+FROM EMP 
+WHERE JOB='SALESMAN' 
+OR JOB = 'CLERK';
+
+//Q16. retrieve all employees who are working for department number 20 and whose name starts with A. 
+
+SELECT ENAME, DEPTNO
+FROM EMP 
+WHERE DEPTNO = 20 
+AND ENAME LIKE 'A%';
+
+
+// evaluation of operators is left to right. Use parantheses to change the precedence.
+//Q17. retrieve all employees whose name starts with A and are working for department number 20
+
+SELECT ENAME, DEPTNO
+FROM EMP 
+WHERE DEPTNO = 20 
+AND (ENAME LIKE 'a%' 
+OR ENAME LIKE 'A%');
+
+
+// NOT operator is used for negation
+//Q18. retrieve all employees who are getting commission
+
+SELECT * 
+FROM EMP 
+WHERE COMM IS NOT NULL;
+
+
+3) example for GROUP BY clause
+
+// Q19. retrieve the sum of salary for each job type
+// using grouping attribute with SELECT is optional
+
+SELECT SUM(SAL) 
+FROM EMP
+GROUP BY JOB;
+
+// Q20. retrieve the sum of salary for each job type
+// using grouping attribute with SELECT
+
+SELECT JOB, SUM(SAL) 
+FROM EMP
+GROUP BY JOB;
+
+// Q21. find the number of employees in each department
+
+SELECT DEPTNO, COUNT(*) 
+FROM EMP
+GROUP BY DEPTNO;
+
+
+4) example for HAVING clause
+
+//Q22. select the departments in which more than 4 employees are working
+
+SELECT DEPTNO, COUNT(*)
+FROM EMP
+GROUP BY DEPTNO
+HAVING COUNT(*) > 4;
+
+//Q23. select the departments which are paying total salary of more than 10000
+
+SELECT DEPTNO, SUM(SAL)
+FROM EMP
+GROUP BY DEPTNO
+HAVING SUM(SAL) > 10000;
+
+5) example for ORDER BY
+
+//Q24. retrieve all employees in ascending order
+
+SELECT ENAME, SAL, JOB
+FROM EMP
+ORDER BY ENAME; 
+
+//Q25. retrieve all employees in descending order
+
+SELECT ENAME, SAL, JOB
+FROM EMP
+ORDER BY ENAME DESC;
+
+
+
+// query with all clauses
+//Q26. find all the type of jobs whose total salary is greater than 1500 in department number 20
+
+SELECT JOB, SUM(SAL) 
+FROM EMP
+WHERE DEPTNO =20
+GROUP BY JOB
+HAVING SUM(SAL)>1500
+ORDER BY JOB;
+
+// use of DISTINCT keyword
+// Q27. without DISTINCT (we get duplicates)
+SELECT JOB
+FROM EMP;
+
+
+//Q.28 with DISTINCT(It helps in eliminating duplicate)
+
+SELECT DISTINCT JOB
+FROM EMP;
+

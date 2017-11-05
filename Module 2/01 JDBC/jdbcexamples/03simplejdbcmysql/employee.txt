@@ -1,0 +1,61 @@
+SHOW DATABASES; // will display all the users or databases
+
+CREATE DATABASE RAVIMYSQL; // will create a new user or a database
+
+DROP DATABASE RAVIMYSQL; // will delete a user
+
+USE RAVIMYSQL; 
+
+SHOW TABLES; // will show all tables in a particular user or database
+
+DROP TABLE EMP; // will delete a table
+
+// oracle syntax of creating table
+CREATE TABLE EMP(EMP_ID NUMBER(5), NAME VARCHAR2(30), SALARY NUMBER(6));
+
+//mysql syntax creating table
+CREATE TABLE EMP(EMP_ID INT(5), NAME VARCHAR(30), SALARY INT(6));
+
+DESCRIBE EMP;
+
+SELECT * FROM EMP;
+
+/* create operation using INSERT */
+
+INSERT INTO EMP VALUES(101,'RAJESH',1000);
+
+INSERT INTO EMP VALUES(102,'RAMESH',2000);
+
+SELECT * FROM EMP;
+
+INSERT INTO EMP (EMP_ID,NAME,SALARY) VALUES (103,'GANESH',3000);
+
+INSERT INTO EMP (EMP_ID,NAME,SALARY) VALUES(104,'REVATHI',4000);
+
+INSERT INTO EMP (EMP_ID,NAME,SALARY) VALUES(105,'RAVI',5000);
+
+INSERT INTO EMP (EMP_ID,NAME,SALARY) VALUES(106,'KUMAR',6000);
+
+INSERT INTO EMP (EMP_ID,NAME,SALARY) VALUES(107,'RAMA',7000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+// inner join
+//Q1. query for which employee works for which department
+
+SELECT E.ENAME, D.DNAME, E.JOB
+FROM DEPT D JOIN EMP E
+ON D.DEPTNO = E.DEPTNO;
+
+SELECT E.ENAME, D.DNAME, E.JOB
+FROM DEPT D INNER JOIN EMP E
+ON D.DEPTNO = E.DEPTNO;
+
+// left outer join
+//Q2. retrieve all the departments and its employees
+
+SELECT D.DNAME, E.ENAME
+FROM DEPT D LEFT OUTER JOIN EMP E
+ON D.DEPTNO = E.DEPTNO;
+
+// right outer join
+//Q3. retreive all the employees and their deptartments
+
+SELECT E.ENAME, D.DNAME
+FROM DEPT D RIGHT OUTER JOIN EMP E
+ON D.DEPTNO = E.DEPTNO;
+
+
+// full outer join
+//Q.4 query for selecting all details of departments and all employees
+
+SELECT E.ENAME , D.DNAME, E.JOB
+FROM DEPT D FULL OUTER JOIN EMP E
+ON D.DEPTNO = E.DEPTNO;
+
+
+//Q.5 cross join (the result of cross join is cartesian product)
+
+SELECT D.DNAME,E.ENAME
+FROM DEPT D CROSS JOIN EMP E;
+
+
+// self join 
+//Q.6 query for finding which employee works for which manager
+
+SELECT E.ENAME, E1.ENAME AS MANAGER
+FROM EMP E JOIN EMP E1
+ON E.MGR = E1.EMPNO;
+
+
+// non equi join
+//Q.7 find all the employees and their salary grades
+
+SELECT E.ENAME, E.SAL, S.GRADE 
+FROM EMP E JOIN SALGRADE S 
+ON E.SAL >= S.LOSAL AND E.SAL <= S.HISAL;
+
+

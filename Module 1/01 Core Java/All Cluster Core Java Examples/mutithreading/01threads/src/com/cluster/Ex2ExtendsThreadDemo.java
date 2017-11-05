@@ -1,0 +1,47 @@
+package com.cluster;
+
+/**
+ *  Cluster Software Solutions.
+ *  (Mob:98451-31637/39
+ *  www.clusterindia.com)
+ */
+// program to create a new thread by extending class Thread
+class MyThread extends Thread
+{
+	public void run() // step 1 define a thread
+	{
+		System.out.println("Begin of child thread");
+		m1();
+		System.out.println("End of child thread");
+	}
+	
+	void m1()
+	{
+		System.out.println("Begin of m1");
+		m2();
+		System.out.println("End of m1");
+	}
+	
+	void m2()
+	{
+		System.out.println("Begin of m2");
+		System.out.println("End of m2");
+	}
+}
+
+/**
+ *  Cluster Software Solutions.
+ *  (Mob:98451-31637/39
+ *  www.clusterindia.com)
+ */
+public class Ex2ExtendsThreadDemo 
+{
+	public static void main(String[] args)
+	{
+		System.out.println("Begin main");
+		MyThread mt = new MyThread(); // step 2 create a child thread or user thread
+		mt.start(); // step 3 start the thread
+		System.out.println("Back in main");
+		System.out.println("End main");
+	}
+}

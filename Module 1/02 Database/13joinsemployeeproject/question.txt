@@ -1,0 +1,49 @@
+//Q1. select employee details and their phone numbers
+
+
+//Q2. select all the employees and all their phone numbers
+
+
+
+//Q3. select employee details, phone numbers and their phone number type
+
+
+
+//Q4. select employee details and their email ids.
+
+
+
+//Q5. select employee details, email ids and email types.
+
+
+
+//Q6. select the employee details and only 'PERSONAL' email ids.
+
+
+
+//Q7. Given a phone number select employee details.(phone number is 222)
+
+
+
+//Q8. Given a phone number select employee and email details. (phone number is 222)
+
+
+
+//Q9. Given a phone number select employee, email, phone and department details. (phone number is 222)
+
+
+
+//Q10. select employees having phone and working for 'MARKETING' department.
+
+
+
+
+//left outer join
+//Q11. select all the employees and all the phone and working for 'MARKETING' department.
+
+
+//Q12. select employees and phone details working for 'MARKETING' department and having 'MOBILE' phones.
+
+
+
+

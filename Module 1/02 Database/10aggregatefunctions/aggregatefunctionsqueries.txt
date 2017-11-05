@@ -1,0 +1,101 @@
+// aggregate functions (MAX(), MIN(), SUM(), AVG(), COUNT)
+
+
+// Q1. retrieve the highest salary 
+SELECT MAX(SAL) FROM EMP;
+
+// Q2. retrieve the highest salary for job type clerk
+SELECT MAX(SAL) FROM EMP WHERE JOB='CLERK';
+
+// Q3. retrieve the highest salary in every job type
+SELECT MAX(SAL) FROM EMP GROUP BY JOB;
+
+// Q4. diplay the highest salary in every job type
+SELECT JOB, MAX(SAL) FROM EMP GROUP BY JOB;
+
+// Q5. select name and salary of the employee who is getting the highest salary
+SELECT ENAME, SAL FROM EMP WHERE SAL = (SELECT MAX (SAL) FROM EMP);
+
+
+// Q6. select name and salary of the clerk who is getting highest salary
+SELECT ENAME, SAL FROM EMP WHERE SAL = (SELECT MAX (SAL) FROM EMP WHERE JOB='CLERK');
+
+// Q7. retrieve name,job and salary of all employees who are getting the highest salary in every job type
+SELECT ENAME, JOB, SAL FROM EMP WHERE SAL IN (SELECT MAX(SAL) FROM EMP GROUP BY JOB);
+
+
+// Q8. retrieve the lowest salary
+SELECT MIN(SAL) FROM EMP; 
+
+// Q9. select name and salary of the clerk who is getting lowest salary
+SELECT ENAME, SAL FROM EMP WHERE SAL = (SELECT MIN(SAL) FROM EMP WHERE JOB='CLERK');
+
+// Q10. query to find the total salary of all the employees
+SELECT SUM(SAL) FROM EMP;
+
+// Q11. query to find the total salary of all clerks with alias
+SELECT SUM(SAL) AS TOTAL_SALARY_OF_CLERKS FROM EMP WHERE JOB='CLERK';
+
+// Q12. query to find the total salary of all clerks without alias
+SELECT SUM(SAL) FROM EMP WHERE JOB='CLERK';
+
+// Q13. query to find the average salary
+SELECT AVG (SAL) FROM EMP;
+
+// Q14. query to find the average salary of clerk with alias
+SELECT AVG(SAL) AS AVERAGE_SALARY_FOR_CLERK FROM EMP WHERE JOB='CLERK';
+
+// Q15. query to find how many employees are getting salary
+SELECT COUNT(SAL) FROM EMP;
+
+// Q16. query to find total number of employees
+SELECT COUNT(ENAME) FROM EMP;
+
+// Q17. will return number of rows in the table
+SELECT COUNT(*) FROM EMP;
+
+// Q18. query to find how many employees are getting commission
+SELECT COUNT(COMM) FROM EMP;
+
+//Q19. retrieve number of employees working in each department
+SELECT DEPTNO, COUNT(*) FROM EMP GROUP BY DEPTNO;
+
+//Q20. retrieve number of employees working in each job type
+SELECT JOB, COUNT(*) FROM EMP GROUP BY JOB;
+
+// Q21. query to find number of managers 
+SELECT COUNT(JOB) AS NO_OF_MANAGERS FROM EMP WHERE JOB='MANAGER';
+
+
+// we can use two aggregate functions in single query.
+
+// Q22. retrieve the highest and lowest salary 
+SELECT MIN(SAL), MAX(SAL) FROM EMP;
+
+// Q23. retrieve the highest and lowest salary 
+SELECT MIN(SAL) AS LOWEST_SALARY, MAX(SAL) AS HIGHEST_SALARY FROM EMP;
+
+// Q24. retrieve the highest and lowest salary in every department
+SELECT DEPTNO, MIN(SAL), MAX(SAL) FROM EMP GROUP BY DEPTNO;
+
+// Q25. retrieve the highest and lowest salary in every job type
+SELECT JOB, MIN(SAL), MAX(SAL) FROM EMP GROUP BY JOB;
+
+// Q26. find the average and total salary
+SELECT AVG(SAL), SUM(SAL) FROM EMP;
+
+// Q27. find the average and total salary 
+SELECT AVG(SAL) AS AVERAGE_SALARY, SUM(SAL) AS TOTAL_SALARY FROM EMP;
+
+// Q28. find the average and total salary of every department
+SELECT DEPTNO, AVG(SAL), SUM(SAL) FROM EMP GROUP BY DEPTNO;
+
+
+//Q29. find all the type of jobs whose total salary is greater than 1500 in department number 20
+
+SELECT JOB, SUM(SAL) 
+FROM EMP
+WHERE DEPTNO =20
+GROUP BY JOB
+HAVING SUM(SAL)>1500
+ORDER BY JOB;

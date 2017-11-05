@@ -1,0 +1,19 @@
+DROP TABLE EMPDOB;
+
+CREATE TABLE EMPDOB(NAME VARCHAR2(30), DOB DATE);
+
+/* TO_DATE converts a string to date. This is generally used for
+   storing in database i.e. CUD operations */
+
+INSERT INTO EMPDOB(NAME, DOB) VALUES ('RAJESH', TO_DATE('31-12-2008','DD-MM-YYYY'));
+
+INSERT INTO EMPDOB(NAME, DOB) VALUES ('RAMESH', TO_DATE('31-12-2008','DD-MM-YYYY'));
+ 
+
+/* TO_CHAR converts a date to string. This is generally used for 
+  display i.e. R operations.*/
+
+SELECT NAME, TO_CHAR(DOB,'DD/MM') FROM EMPDOB;
+
+SELECT NAME, TO_CHAR(DOB,'YYYY/DD/MM') FROM EMPDOB; 
+

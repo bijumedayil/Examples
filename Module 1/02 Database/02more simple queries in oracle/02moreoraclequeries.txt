@@ -1,0 +1,163 @@
+SELECT * FROM TAB; //	(displays all tables in database)
+
+DROP TABLE EMPLOYEE;
+
+
+/*inserting values */
+
+CREATE TABLE EMPLOYEE(EMPLOYEE_ID NUMBER(5), NAME VARCHAR2(20), SALARY NUMBER(6));
+
+
+INSERT INTO EMPLOYEE VALUES(101,'RAMESH',1000);
+
+INSERT INTO EMPLOYEE (EMPLOYEE_ID,NAME,SALARY) VALUES (102,'RAJESH',2000);
+
+INSERT INTO EMPLOYEE VALUES (&EMPLOYEE_ID,'&NAME',&SALARY);
+
+PRESS /
+
+COMMIT;
+
+
+
+/*altering or modifying table*/
+
+ALTER TABLE EMPLOYEE ADD (PASSWORD VARCHAR(20));
+
+DESC EMPLOYEE;
+
+SELECT * FROM EMPLOYEE;
+
+ALTER TABLE EMPLOYEE DROP (PASSWORD);	
+
+ALTER TABLE EMPLOYEE MODIFY (NAME VARCHAR2 (30));
+
+UPDATE EMPLOYEE SET PASSWORD = 'RAJ' WHERE EMPLOYEE_ID = 102;
+
+UPDATE EMPLOYEE SET PASSWORD = 'GAN'WHERE NAME = 'GANESH';
+
+
+
+
+/* more select queries*/
+
+SELECT * FROM EMPLOYEE;
+
+// (sql queries, table names, column name are case insensitive)
+
+select * from employee; 
+
+seLect * from empLoyEE; 
+
+SELECT * FROM EMPLOYEE ORDER BY SALARY;
+
+SELECT NAME,SALARY FROM EMPLOYEE ORDER BY SALARY DESC;
+
+
+/* example for comparison operator */
+
+
+SELECT SALARY, NAME FROM EMPLOYEE WHERE NAME='RAMESH';
+
+// (queries are case insensitive but value is case sensitive  
+and will not fetch any record)
+
+select salary, name from employee where name = 'ramesh'; 
+
+// (queries are case insensitive but value is case sensitive  
+and will fetch record)
+
+select salary, name from employee where name = 'RAMESH'; 
+
+SELECT * FROM EMPLOYEE WHERE SALARY < 3000;
+
+SELECT * FROM EMPLOYEE WHERE SALARY > 3000;
+
+SELECT EMPLOYEE_ID, NAME FROM EMPLOYEE WHERE SALARY > 3000;
+
+SELECT NAME,SALARY FROM EMPLOYEE WHERE SALARY > 3000 ORDER BY SALARY;
+
+SELECT EMPLOYEE_ID, NAME FROM EMPLOYEE WHERE SALARY <= 4000;
+
+SELECT EMPLOYEE_ID, NAME FROM EMPLOYEE WHERE SALARY >= 4000;
+
+SELECT EMPLOYEE_ID, NAME FROM EMPLOYEE WHERE SALARY <> 4000;
+
+SELECT SALARY*2 FROM EMPLOYEE;
+
+
+/* example for range test operator */
+
+SELECT SALARY, NAME FROM EMPLOYEE WHERE SALARY BETWEEN 2000 AND 5000;
+
+
+/* example for set membership operator */
+
+// for "=" (comparison) operator we can always provide a single 
+value
+SELECT SALARY, NAME FROM EMPLOYEE WHERE NAME='RAMESH'; 
+
+//error will not work because we cant provide two values for "=" 
+(comparison) operator
+
+SELECT SALARY, NAME FROM EMPLOYEE WHERE NAME='RAMESH','KUMAR'; 
+
+// but for IN operator we can provide multiple values
+SELECT EMPLOYEE_ID, NAME FROM EMPLOYEE WHERE NAME IN ('RAJESH','RAMESH'); 
+
+SELECT EMPLOYEE_ID, NAME FROM EMPLOYEE WHERE PASSWORD = 'RAJ' AND NAME = 'RAJESH';
+
+
+/* example for pattern matching operator */
+
+//  % replaces multiple character i.e. zero or more than 1 character
+
+SELECT EMPLOYEE_ID, NAME FROM EMPLOYEE WHERE NAME LIKE 'R%'; 
+
+//  _ replaces single character.
+SELECT EMPLOYEE_ID, NAME FROM EMPLOYEE WHERE NAME LIKE 'R_MESH'; 
+
+SELECT EMPLOYEE_ID, NAME FROM EMPLOYEE WHERE NAME LIKE 'RA_ESH';
+
+SELECT EMPLOYEE_ID, NAME FROM EMPLOYEE WHERE NAME LIKE 'R_ME_H';
+
+SELECT EMPLOYEE_ID, NAME FROM EMPLOYEE WHERE NAME LIKE 'R_M%';
+
+
+
+/* example for null value test operator */
+
+SELECT SALARY, NAME FROM EMPLOYEE WHERE PASSWORD IS NULL;
+
+
+/* example for logical operator */
+
+SELECT SALARY, NAME FROM EMPLOYEE WHERE PASSWORD IS NOT NULL;
+
+
+
+
+/* example for functions */
+
+
+SELECT MAX(SALARY) FROM EMPLOYEE;
+
+SELECT MAX(SALARY) FROM EMPLOYEE WHERE SALARY < (SELECT MAX(SALARY) FROM EMPLOYEE);
+
+
+/* select query will never make changes but update query will 
+definitely makes changes to valuesin database
+
+
+UPDATE EMPLOYEE SET PASSWORD = 'GGGG',SALARY = 3333 WHERE NAME = 'GANESH';
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1 @@
+http://localhost:8090/10redirect/jsp/one.jsp
