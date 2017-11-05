@@ -1,0 +1,10 @@
+*.jar
+*.class
+*.war
+*.log
+*.zip
+*.rar
+/lib/
+/classes/
+/target/
+/checkouts/
